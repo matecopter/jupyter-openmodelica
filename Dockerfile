@@ -9,15 +9,15 @@ RUN wget -q http://build.openmodelica.org/apt/openmodelica.asc -O- | apt-key add
 RUN apt-get update
 
 # Install minimal OpenModelica Components
-RUN apt-get install -y omc omlib-modelica-3.2.2
+RUN apt-get install -y omc omlib-modelica-3.2.3
 
 # Install Python components
-RUN apt-get install -y python-pip python-dev build-essential 
+RUN apt-get install -y python3-pip python3-dev build-essential
 RUN apt-get install -y git
 
 # Install Jupyter notebook, always upgrade pip
-RUN pip install --upgrade pip
-RUN pip install jupyter
+RUN pip3 install --upgrade pip
+RUN pip3 install jupyter
 
 # Install OMPython and jupyter-openmodelica kernel
 RUN pip install -U git+git://github.com/OpenModelica/OMPython.git
