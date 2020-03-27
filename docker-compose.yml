@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  jupyter:
+    build: ./
+    image: jupyter:latest
+    container_name: jupyter
+    volumes:
+      - ./config.py:/home/openmodelicausers/.jupyter/jupyter_notebook_config.py
+      - ./notebooks:/home/openmodelicausers/notebooks
+    ports:
+      - 127.0.0.1:80:8888
+    restart: unless-stopped
+    environment:
+      TZ: 'Europe/Berlin'
+    

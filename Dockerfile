@@ -1,9 +1,9 @@
-FROM ubuntu:14.04
+FROM ubuntu:18.04
 RUN apt-get update
 
-RUN apt-get install -y wget
-RUN for deb in deb deb-src; do echo "$deb http://build.openmodelica.org/apt `lsb_release -cs` stable"; done | sudo tee /etc/apt/sources.list.d/openmodelica.list
-RUN wget -q http://build.openmodelica.org/apt/openmodelica.asc -O- | sudo apt-key add - 
+RUN apt-get install -y --no-install-recommends ca-certificates wget gnupg
+RUN echo "deb http://build.openmodelica.org/apt/ bionic stable" > /etc/apt/sources.list.d/openmodelica.list; echo "deb-src http://build.openmodelica.org/apt/ bionic stable" >> /etc/apt/sources.list.d/openmodelica.list
+RUN wget -q http://build.openmodelica.org/apt/openmodelica.asc -O- | apt-key add 
 
 # Update index (again)
 RUN apt-get update
@@ -35,6 +35,7 @@ ENV HOME /home/openmodelicausers
 ENV USER openmodelicausers
 WORKDIR $HOME
 
+RUN mkdir $HOME/.jupyter
 
 EXPOSE 8888
 
