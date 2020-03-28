@@ -2,9 +2,15 @@ version: '3.7'
 
 services:
   jupyter:
-    build: ./
-    image: jupyter:latest
-    container_name: jupyter
+    build:
+      context: .
+      args:
+        UBUNTU_VER: "bionic"
+        OMLIB_MODELICA_VER: "3.2.3"
+        #Leave empty if you want to use Python2
+        PYTHON_VER: 3
+    image: jupyter-openmodelica
+    container_name: jupyter-openmodelica
     volumes:
       - ./config.py:/home/openmodelicausers/.jupyter/jupyter_notebook_config.py
       - ./notebooks:/home/openmodelicausers/notebooks
