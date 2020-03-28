@@ -29,20 +29,15 @@ A Docker container to run jupyter-notebook openmodelica Kernel
 
 Requirements
 
-  1. docker, To install docker see https://docs.docker.com/engine/installation/
+  1. `docker`, To install Docker see https://docs.docker.com/install/
+  2. `docker-compose`, To install Docker Compose see https://docs.docker.com/compose/install/
 
-USAGE
+Usage
 
-  To build jupyter-openmodelica 
+  1. `mkdir notebooks`
+  2. `docker-compose up -d --build`
 
-  1. clone the project
-  2. cd jupyter-openmodelica
-  3. docker build -t jupyteropenmodelica . 
-  
-  After building the image jupyteropenmodelica, we are now ready to run the jupyter-openmodelica in docker container
+Configuration
 
-To use it, run:
-
-  docker run -p 8888:8888 jupyteropenmodelica
-   
-
+To configure your instance you have to edit the `config.py` file and restart the container via `docker-compose restart`.  
+You can find a documentation of the configuration options at https://jupyter-notebook.readthedocs.io/en/stable/config.html.
