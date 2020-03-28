@@ -13,4 +13,4 @@ services:
     restart: unless-stopped
     environment:
       TZ: 'Europe/Berlin'
-    
+    command: ["jupyter", "notebook"]
